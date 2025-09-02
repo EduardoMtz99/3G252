@@ -1,0 +1,156 @@
+@startuml
+class JuegoGalaga {
+}
+
+class Jugador {
+  +disparar()
+  +mover()
+  +activarPowerUp()
+  +procesarEvento()
+  +recibirImpacto()
+}
+
+class Menu {
+  +ingresarDinero()
+}
+
+class GameOver {
+  +finalizarJuego()
+}
+
+class Pantalla {
+  +mostrarPantalla()
+}
+
+class Nivel {
+  +generarEnemigo()
+}
+
+class Enemigo {
+  +mover()
+  +disparar()
+  +recibirImpacto()
+}
+
+class Ataque {
+}
+
+class Movimiento {
+  +mover()
+}
+
+class Bala {
+  +recibirImpacto()
+  +mover()
+}
+
+class Colision {
+  +detectarColision()
+}
+
+class PowerUp {
+  +activarPowerUp()
+}
+
+class Efecto {
+}
+
+class GestorDeSonido {
+  +reproducirSonido()
+}
+
+class Fondo {
+}
+
+class Boton {
+  +presionarBoton()
+}
+
+class Vida {
+}
+
+class Limite {
+}
+
+class Color {
+}
+
+class Vector {
+}
+
+class Posicion {
+}
+
+class Imagen {
+  +cargarRecurso()
+}
+
+class Evento {
+  +procesarEvento()
+}
+
+class Sonido {
+  +cargarRecurso()
+}
+
+class Recurso {
+  +cargarRecurso()
+}
+
+
+class MemoriaJugador
+class MemoriaNivel
+class MemoriaSonido
+class MemoriaPantalla
+class RegistroEvento
+class EstadoVida
+class EstadoPowerUp
+class EstadoRecurso
+class EstadoColision
+
+
+JuegoGalaga *-- Menu
+Menu *-- Boton
+Pantalla *-- Fondo
+Nivel *-- Limite
+Enemigo *-- Ataque
+Movimiento *-- Vector
+Colision *-- Color
+Jugador *-- Posicion
+Enemigo *-- Posicion
+Bala *-- Posicion
+Bala *-- Colision
+Fondo *-- Imagen
+Limite *-- Colision
+GestorDeSonido *-- Sonido
+
+JuegoGalaga --() Pantalla
+JuegoGalaga --() Jugador
+GameOver --() Pantalla
+Nivel --() Enemigo
+Ataque --() Movimiento
+PowerUp --() Efecto
+Boton --() Evento
+
+Jugador o-- Vida
+Jugador --|> Evento
+Nivel --|> PowerUp
+Movimiento --|> Colision
+Bala --|> Movimiento
+Efecto --|> GestorDeSonido
+Vida --|> JuegoGalaga
+Color --|> Imagen
+Imagen --|> Recurso
+Evento --|> Recurso
+Sonido --|> Recurso
+Jugador *-- MemoriaJugador
+Nivel *-- MemoriaNivel
+GestorDeSonido *-- MemoriaSonido
+Pantalla *-- MemoriaPantalla
+Evento *-- RegistroEvento
+Vida *-- EstadoVida
+PowerUp *-- EstadoPowerUp
+Recurso *-- EstadoRecurso
+Colision *-- EstadoColision
+
+@enduml
