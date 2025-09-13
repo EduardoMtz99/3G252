@@ -9,4 +9,6 @@ private:
 public:
     void Encender() {}
     void Apagar() {}
+    Foco() {}
+    ~Foco() {}
 };
